@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        .card { 
+            display: inline-block; 
+            width: 300px; 
+            margin: 20px; 
+            padding: 30px; 
+            border: 1px solid #ddd; 
+            border-radius: 10px; 
+            background: #f9f9f9;
+        }
+        a { text-decoration: none; color: white; background: #007bff; padding: 15px 30px; border-radius: 5px; display: inline-block; margin: 10px; }
+        a:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Face Detection System</h1>
+    
+    <div class="card">
+        <h2>📹 Live Camera</h2>
+        <p>View live feed with face detection</p>
+        <a href="{{ url_for('camera') }}">Go to Live Camera</a>
+    </div>
+
+    <div class="card">
+        <h2>📊 Analytics</h2>
+        <p>View detection statistics and logs</p>
+        <a href="{{ url_for('analytics') }}">View Analytics</a>
+    </div>
+
+    <br><br>
+    <a href="{{ url_for('logout') }}" style="background: #dc3545;">Logout</a>
+</body>
+</html>

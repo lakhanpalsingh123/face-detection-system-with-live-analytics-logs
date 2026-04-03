@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Analytics</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        .header { display: flex; justify-content: space-between; align-items: center; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📊 Face Detection Analytics</h1>
+        <div>
+            <a href="{{ url_for('dashboard') }}">Dashboard</a> | 
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </div>
+
+    <h3>Total Detections This Session: {{ logs|length }}</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Faces Detected</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in logs[::-1] %} <tr>
+                <td>{{ log.time }}</td>
+                <td>{{ log.faces }}</td>
+                <td>{{ log.details }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="3" style="text-align:center;">No detection logs yet. Start the camera to generate data.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
